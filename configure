@@ -1,0 +1,69 @@
+#!/bin/sh
+
+config_mk="config.mk"
+prefix="\$(HOME)"
+
+usage_message="Usage: ./configure
+Produce a config.mk file to be sourced by Makefile
+--prefix=<dir>             Install architecture-independent files in \$prefix
+"
+
+print_ok_fail () {
+	# Usage: print_ok_fail <status> <message>...
+	# <status> 0=ok; 1-127=fail
+	status=$1
+	shift
+	if [ "$status" = "0" ]; then
+		printf '%b\n' "[ OK ] $*"
+	else
+		printf '%b\n' "[FAIL] $*"
+		exit 1
+	fi
+}
+
+check_bin () {
+	type "$*" >/dev/null 2>&1
+	print_ok_fail $? $*
+}
+
+check_lib () {
+	pkg-config "$*" >/dev/null 2>&1
+	print_ok_fail $? $*
+}
+
+check_dependencies () {
+	for bin in "pkg-config"; do
+		check_bin "$bin"
+	done
+	for lib in "glib-2.0"; do
+		check_lib "$lib"
+	done
+}
+
+add () {
+	printf '%b\n' "$*" >>"$config_mk"
+}
+
+main () {
+	for arg
+	do
+		opt=${arg%%=*}
+		var=${arg#*=}
+		case "$opt" in
+		--prefix)
+			prefix="$var" ;;
+		-h|--help)
+			printf '%b' "$usage_message"; exit 1 ;;
+		*)
+			printf '%b\n' "warn: unknown option $opt" >&2 ;;
+		esac
+	done
+
+	check_dependencies
+
+	rm -rf $config_mk
+	add "prefix = $prefix"
+	add "bindir = $prefix/bin"
+}
+
+main "$@"

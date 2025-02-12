@@ -1,0 +1,19 @@
+item Browser "firefox https://labwc.github.io"
+item Terminal "foot zsh"
+item Senpai "foot senpai"
+item Tweaks labwc-tweaks
+
+sepr
+
+exec labwc-menu-generator -b -t foot -i ~/.config/teallach/ignore
+
+sepr
+
+menu Preferences
+  item "Edit rc.xml" "featherpad ~/.config/teallach/rc.xml"
+  item "Edit autostart" "featherpad ~/.config/teallach/autostart"
+
+menu Exit
+  conf Reconfigure
+  exit Logout
+
