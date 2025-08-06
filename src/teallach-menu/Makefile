@@ -1,4 +1,4 @@
-include ../config.mk
+include ../../config.mk
 
 CFLAGS ?= -g -Wall
 CFLAGS += `pkg-config --cflags glib-2.0`

@@ -1,20 +1,20 @@
-DIRS = menu etc
+DIRS = src etc
 MAKEFLAGS += --no-print-directory
 
 include config.mk
 
 all: $(DIRS)
-	@$(MAKE) -C menu
+	@$(MAKE) -C src/teallach-menu
 
 install:
-	@$(MAKE) -C menu $@
+	@$(MAKE) -C src/teallach-menu $@
 	@$(MAKE) -C etc $@
 
 uninstall:
-	@$(MAKE) -C menu $@
+	@$(MAKE) -C src/teallach-menu $@
 
 clean:
-	@$(MAKE) -C menu $@
+	@$(MAKE) -C src/teallach-menu $@
 
 diff:
 	@$(MAKE) -C etc $@
