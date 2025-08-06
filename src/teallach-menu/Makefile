@@ -7,11 +7,11 @@ CC = gcc
 QUIET_CC   = @echo '     CC    '$@;
 
 SCRIPT = teallach-menu
-PROG = tl-pipemenu
+PROG = tl-menu-convert
 
 all: $(PROG)
 
-tl-pipemenu: tl-pipemenu.c
+tl-menu-convert: tl-menu-convert.c
 	$(QUIET_CC)$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 install:

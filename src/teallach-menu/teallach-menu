@@ -4,4 +4,4 @@
 filename="$TL_CONFIG_DIR/menu"
 
 [[ -e "$filename" ]] || { printf "fatal: no menu file"; exit 1; }
-tl-pipemenu < "$filename"
+tl-menu-convert < "$filename"
