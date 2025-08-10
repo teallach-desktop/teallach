@@ -1,33 +1,38 @@
-# TEALLACH
+<h2 align="center">Teallach</h2>
 
-## Name
+# Name
 
 In Gaelic teallach means forge, hearth, fireplace or even the large stone that
 backs the fireplace in a croft. It has also been known to signify an anvil or
 furnace.
 
-## Why
+# Why
 
 There is profound beauty in a simple openbox/tint2 setup.
 
-## What
+# What
 
 Informal bumbles of ideas forming a thin veneer on top of labwc.
 
-A micro Desktop Environment (µDE).
-
 - [x] teallach-menu: a configurable wrapper for labwc-menu-generator
 
-## How
+# How
 
     ./configure
 	make
 	make install
-    labwc -C $HOME/.config/teallach   
 
 Files will be installed as follows:
 
-- $HOME/.config/teallach/
 - $HOME/bin/teallach-*
 - $HOME/bin/tl-*
+- $HOME/.local/share/themes/teallach/
+- $HOME/.local/share/teallach/
 
+# Namespaces
+
+We use `teallach` for porcelain commands, and `tl` for plubming commands.
+
+# License
+
+GPL3 to align with BunsenLabs and Deadbang for easier sharing.
