@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<labwc_config>
+  <core>
+    <gap>5</gap>
+    <disableMaximizedServerDecor>yes</disableMaximizedServerDecor>
+  </core>
+  <theme>
+    <name>teallach</name>
+    <icon>Papirus</icon>
+    <titlebar>
+      <layout>menu:iconify,max,close</layout>
+      <showTitle>yes</showTitle>
+    </titlebar>
+    <cornerRadius>5</cornerRadius>
+    <dropShadows>yes</dropShadows>
+  </theme>
+  <resize>
+    <drawContents>no</drawContents>
+  </resize>
+  <desktops>
+    <names>
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+    </names>
+  </desktops>
+  <menu>
+    <showIcons>yes</showIcons>
+  </menu>
+  <keyboard>
+    <default/>
+    <layoutScope>window</layoutScope>
+    <keybind key="Super_L" onRelease="true">
+      <action name="Execute" command="wmenu-run"/>
+    </keybind>
+    <keybind key="W-l" name.action="Execute" command.action="swaylock -c 000000"/>
+    <keybind key="W-F7" name.action="Execute" command.action="wf-recorder --output eDP-1"/>
+    <keybind key="W-F10" name.action="Execute" command.action="killall SIGINT wf-recorder"/>
+    <keybind key="C-Escape" name.action="Execute" command.action="wmenu-run"/>
+    <keybind key="W-F12" name.action="Debug"/>
+    <keybind key="F12" name.action="ToggleKeybinds"/>
+    <keybind key="W-m">
+      <action name="GrowToEdge" direction="up"/>
+      <action name="GrowToEdge" direction="down"/>
+      <action name="GrowToEdge" direction="left"/>
+      <action name="GrowToEdge" direction="right"/>
+    </keybind>
+    <keybind key="W-S-Left">
+      <action name="ShrinkToEdge" direction="left"/>
+    </keybind>
+    <keybind key="W-S-Right">
+      <action name="GrowToEdge" direction="right"/>
+    </keybind>
+    <keybind key="W-S-Up">
+      <action name="ShrinkToEdge" direction="up"/>
+    </keybind>
+    <keybind key="W-S-Down">
+      <action name="GrowToEdge" direction="down"/>
+    </keybind>
+    <keybind key="C-W-Left">
+      <action name="SnapToEdge" direction="left"/>
+    </keybind>
+    <keybind key="C-W-Right">
+      <action name="SnapToEdge" direction="right"/>
+    </keybind>
+    <keybind key="C-W-Up">
+      <action name="SnapToEdge" direction="up"/>
+    </keybind>
+    <keybind key="C-W-Down">
+      <action name="SnapToEdge" direction="down"/>
+    </keybind>
+    <keybind key="Print">
+      <action name="Execute">
+        <command>sh -c 'grim -g "$(slurp)"'</command>
+      </action>
+    </keybind>
+  </keyboard>
+  <mouse>
+    <default/>
+    <context name="Root">
+      <mousebind button="Left" action="Press">
+        <action name="Unfocus"/>
+      </mousebind>
+    </context>
+    <context name="Top">
+      <mousebind button="Left" action="DoubleClick">
+        <action name="ToggleMaximize" direction="vertical"/>
+      </mousebind>
+    </context>
+    <context name="Bottom">
+      <mousebind button="Left" action="DoubleClick">
+        <action name="ToggleMaximize" direction="vertical"/>
+      </mousebind>
+    </context>
+    <context name="Left">
+      <mousebind button="Left" action="DoubleClick">
+        <action name="ToggleMaximize" direction="horizontal"/>
+      </mousebind>
+    </context>
+    <context name="Right">
+      <mousebind button="Left" action="DoubleClick">
+        <action name="ToggleMaximize" direction="horizontal"/>
+      </mousebind>
+    </context>
+    <context name="All">
+      <mousebind direction="W-Up" action="Scroll">
+        <action name="ZoomIn"/>
+      </mousebind>
+      <mousebind direction="W-Down" action="Scroll">
+        <action name="ZoomOut"/>
+      </mousebind>
+    </context>
+    <context name="Root">
+      <mousebind button="Right" action="Press">
+        <action name="ShowMenu" menu="client-list-combined-menu"/>
+      </mousebind>
+      <mousebind button="Left" action="Press">
+        <action name="ShowMenu" menu="root-menu"/>
+      </mousebind>
+    </context>
+    <context name="Frame">
+      <mousebind direction="W-S-Up" action="Scroll">
+        <action name="ResizeRelative" left="10%" right="10%" top="10%" bottom="10%"/>
+      </mousebind>
+      <mousebind direction="W-S-Down" action="Scroll">
+        <action name="ResizeRelative" left="-10%" right="-10%" top="-10%" bottom="-10%"/>
+      </mousebind>
+    </context>
+  </mouse>
+  <libinput>
+    <device>
+      <tapAndDrag>yes</tapAndDrag>
+      <dragLock>yes</dragLock>
+      <naturalScroll>no</naturalScroll>
+    </device>
+  </libinput>
+  <windowRules>
+    <windowRule identifier="*" iconPriority="client"/>
+  </windowRules>
+</labwc_config>
+

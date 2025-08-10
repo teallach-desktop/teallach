@@ -5,7 +5,7 @@ item Tweaks labwc-tweaks
 
 sepr
 
-exec labwc-menu-generator -b -t foot -i ~/.config/teallach/ignore
+exec labwc-menu-generator -b -t foot -i ~/.config/teallach/menu-ignore
 
 sepr
 

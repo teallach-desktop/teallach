@@ -1,4 +1,4 @@
-include ../../config.mk
+include ../../Makefile.inc
 
 CFLAGS ?= -g -Wall
 CFLAGS += `pkg-config --cflags glib-2.0`
@@ -17,10 +17,6 @@ tl-menu-convert: tl-menu-convert.c
 install:
 	install -m 755 -d $(bindir)
 	install -m 755 $(PROG) $(SCRIPT) $(bindir)
-
-uninstall:
-	@$(RM) -f $(bindir)/teallach-*
-	@$(RM) -f $(bindir)/tl-*
 
 clean:
 	@$(RM) -f $(PROG)

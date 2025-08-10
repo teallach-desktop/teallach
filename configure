@@ -4,7 +4,7 @@ config_mk="config.mk"
 prefix="\$(HOME)"
 
 usage_message="Usage: ./configure
-Produce a config.mk file to be sourced by Makefile
+Check dependencies and produce a config.mk file to be sourced by Makefile
 --prefix=<dir>             Install architecture-independent files in \$prefix
 "
 
@@ -31,11 +31,19 @@ check_lib () {
 	print_ok_fail $? $*
 }
 
-check_dependencies () {
-	for bin in "pkg-config"; do
+bins="\
+	pkg-config \
+	bash \
+"
+libs="\
+	glib-2.0 \
+"
+
+check_core_dependencies () {
+	for bin in $bins; do
 		check_bin "$bin"
 	done
-	for lib in "glib-2.0"; do
+	for lib in $libs; do
 		check_lib "$lib"
 	done
 }
@@ -59,11 +67,10 @@ main () {
 		esac
 	done
 
-	check_dependencies
+	check_core_dependencies
 
 	rm -rf $config_mk
 	add "prefix = $prefix"
-	add "bindir = $prefix/bin"
 }
 
 main "$@"

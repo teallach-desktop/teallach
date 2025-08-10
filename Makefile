@@ -1,20 +1,20 @@
-DIRS = src etc
-MAKEFLAGS += --no-print-directory
-
 include config.mk
+include Makefile.inc
 
-all: $(DIRS)
+all:
 	@$(MAKE) -C src/teallach-menu
 
 install:
 	@$(MAKE) -C src/teallach-menu $@
-	@$(MAKE) -C etc $@
+	@$(MAKE) -C usr/share/teallach $@
+	@$(MAKE) -C usr/share/themes/teallach $@
 
 uninstall:
-	@$(MAKE) -C src/teallach-menu $@
+	$(RM) -r $(DESTDIR)$(datarootdir)/teallach
+	$(RM) -r $(DESTDIR)$(datarootdir)/themes/teallach
+	$(RM) -f $(DESTDIR)$(bindir)/teallach-*
+	$(RM) -f $(DESTDIR)$(bindir)/tl-*
 
 clean:
 	@$(MAKE) -C src/teallach-menu $@
 
-diff:
-	@$(MAKE) -C etc $@
