@@ -49,6 +49,23 @@ check_core_dependencies () {
 	done
 }
 
+check_prefix_in_path () {
+	if [ $prefix = "\$(HOME)" ]; then
+		bindir=$HOME/bin
+	else
+		bindir=$prefix/bin
+	fi
+	echo $bindir
+	case $PATH in
+	*$bindir*)
+		printf '%b\n' "[ OK ] $bindir exists in \$PATH"
+	        break ;;
+	*)
+		printf '%b\n' "[FAIL] $bindir not in \$PATH; please adjust your \$PATH"
+	        exit 1 ;;
+	esac
+}
+
 add () {
 	printf '%b\n' "$*" >>"$config_mk"
 }
@@ -68,6 +85,7 @@ main () {
 		esac
 	done
 
+	check_prefix_in_path
 	check_core_dependencies
 
 	rm -rf $config_mk
