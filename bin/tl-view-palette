@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+: ${DIR=$HOME/Pictures}
+
+cache_file=$HOME/.cache/nitro/palette
+
+die () {
+	printf '\033[31mfatal:\033[m %b\n' "$@" >&2
+	exit 1
+}
+
+log () {
+	printf '\033[32m=>\033[m %s\n' "$@"
+}
+
+say () {
+	printf "${g_print_col}%b\n" "$@"
+}
+
+check_term_compatibility () {
+	[[ $TERM == *rxvt* ]] && die "terminal type 'rxvt' not supported"
+}
+
+set_color () {
+	local color=$1 r g b
+	case "${color:=7}" in
+		"#"*)
+			(( r=16#${color:1:2} ))
+			(( g=16#${color:3:2} ))
+			(( b=16#${color:5:6} ))
+			: "\\e[38;2;${r};${g};${b}m"
+			;;
+		[0-9]*)	: "\\e[38;5;${color}m" ;;
+		*)	: "\\e[38;5;7m" ;;
+	esac
+	printf -v g_print_col '%b' "$_"
+}
+
+
+view_palette () {
+	# based on what's in g_arr
+	say ""
+	local i
+	for i in "${!g_arr[@]}"; do
+		set_color 7
+		printf "  ${g_print_col}%s " "${g_arr[i]}"
+		set_color "${g_arr[i]}"
+		printf "${g_print_col}%b\n" "███  "
+		set_color 7
+	done
+	set_color 7
+	say ""
+}
+
+main() {
+	check_term_compatibility
+	[[ -e "$1" ]] || die "usage: $0 <file>"
+	mapfile -t g_arr < "$1"
+	view_palette
+}
+
+main "$@"

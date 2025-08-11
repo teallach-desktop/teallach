@@ -8,6 +8,7 @@ install:
 	@$(MAKE) -C src/teallach-menu $@
 	@$(MAKE) -C usr/share/teallach $@
 	@$(MAKE) -C usr/share/themes/teallach $@
+	@$(MAKE) -C bin $@
 
 uninstall:
 	$(RM) -r $(DESTDIR)$(datarootdir)/teallach
