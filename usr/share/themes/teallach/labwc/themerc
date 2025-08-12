@@ -1,7 +1,7 @@
 border.width: 1
 
-window.titlebar.padding.width: 5
-window.titlebar.padding.height: 3
+window.titlebar.padding.width: 2
+window.titlebar.padding.height: 2
 
 # window border
 window.active.border.color: #505050
@@ -16,9 +16,9 @@ window.active.label.text.color: #909090
 window.inactive.label.text.color: #909090
 
 # window button width and spacing
-window.button.width: 14
-window.button.height: 14
-window.button.spacing: 4
+window.button.width: 20
+window.button.height: 20
+window.button.spacing: 0
 
 # window buttons
 window.active.button.unpressed.image.color: #909090
