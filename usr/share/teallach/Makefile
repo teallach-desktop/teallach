@@ -1,12 +1,15 @@
 include ../../../Makefile.inc
 
-# Files that teallach-welcome install in ~/.config/teallach
-DESKTOP_FILES = menu-schema menu-ignore
+# Files that teallach-welcome installs in ~/.config/teallach
+DESKTOP_FILES = menu-schema
 
-# Files that teallach-welcome install in ~/.config/labwc
+# Files that teallach-welcome installs in ~/.config/labwc
 COMPOSITOR_FILES = rc.xml menu.xml
 
-FILES = $(DESKTOP_FILES) $(COMPOSITOR_FILES)
+FILES = \
+	$(DESKTOP_FILES) \
+	$(COMPOSITOR_FILES) \
+	no-display-desktop-entries
 
 all:
 	@echo no-op

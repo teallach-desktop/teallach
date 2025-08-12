@@ -22,12 +22,13 @@ Informal bumbles of ideas forming a thin veneer on top of labwc.
 	make
 	make install
 
-Files will be installed as follows:
+Files will be installed as follows (unless you specify a different `--prefix`
+when running `./configure`:
 
-- $HOME/bin/teallach-*
-- $HOME/bin/tl-*
-- $HOME/.local/share/themes/teallach/
-- $HOME/.local/share/teallach/
+- `~/bin/teallach-*`
+- `~/bin/tl-*`
+- `~/.local/share/themes/teallach/`
+- `~/.local/share/teallach/`
 
 # Namespaces
 

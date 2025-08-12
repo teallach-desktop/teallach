@@ -33,6 +33,7 @@ check_lib () {
 
 bins="\
 	pkg-config \
+	make \
 	bash \
 	labwc-menu-generator
 "
