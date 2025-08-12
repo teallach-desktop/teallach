@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+from enum import Enum
+
+class Layout():
+    def __init__(self, layout, variant, description):
+        self.layout=layout
+        self.variant=variant
+        self.description=description.replace(" ", "_")
+    def __lt__(self, other):
+        return self.description < other.description
+    def get_layout(self):
+        if not self.variant:
+            return self.layout
+        return f"{self.layout}({self.variant})"
+    def get_description(self):
+        return self.description
+
+def generate_code(layouts):
+    for layout in layouts:
+        print(f'{layout.get_layout()} {layout.get_description()}')
+    print()
+
+def main():
+    with open("/usr/share/X11/xkb/rules/evdev.lst", 'r', encoding='UTF-8') as f:
+        lines = f.read().split('\n')
+
+    section_type=Enum('section_type', 'NONE LAYOUT VARIANT')
+    section = section_type.NONE
+
+    layouts = []
+
+    for line in lines:
+        if line.startswith('!'):
+            if line == "! layout":
+                section = section_type.LAYOUT
+            elif line == "! variant":
+                section = section_type.VARIANT
+            else:
+                section = section_type.NONE
+            continue
+        if section == section_type.LAYOUT:
+            fields = line.strip().split(None, maxsplit=1)
+            if not fields:
+                continue
+            layout = fields[0]
+            description = fields[1]
+            layouts.append(Layout(layout, None, description))
+        if section == section_type.VARIANT:
+            fields = line.strip().split(None, maxsplit=1)
+            if not fields:
+                continue
+            variant = fields[0]
+            fields = fields[1].strip().split(':', maxsplit=1)
+            if not fields:
+                continue
+            layout = fields[0]
+            description = fields[1].strip()
+            layouts.append(Layout(layout, variant, description))
+
+    generate_code(sorted(layouts))
+
+if __name__ == '__main__':
+    main()
+

@@ -1,6 +1,8 @@
 include ../Makefile.inc
 
 SCRIPTS = \
+	  teallach-welcome \
+	  tl-keyboard-layouts \
 	  tl-view-palette
 
 all:

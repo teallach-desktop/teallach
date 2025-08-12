@@ -14,13 +14,17 @@ There is profound beauty in a simple openbox/tint2 setup.
 
 Informal bumbles of ideas forming a thin veneer on top of labwc.
 
-- [x] teallach-menu: a configurable wrapper for labwc-menu-generator
+- [x] `teallach-welcome`: a setup script to choose keyboard layout and so on
+- [x] `teallach-menu`: a configurable wrapper for labwc-menu-generator
+- [ ] `teallach-nitrogen`: wallpaper browser and swaybg wrapper
+- [ ] `tint`: a Wayland panel inspired by tint2
 
 # How
 
     ./configure
 	make
 	make install
+    teallach-welcome
 
 Files will be installed as follows (unless you specify a different `--prefix`
 when running `./configure`:
@@ -29,6 +33,11 @@ when running `./configure`:
 - `~/bin/tl-*`
 - `~/.local/share/themes/teallach/`
 - `~/.local/share/teallach/`
+
+The teallach-welcome script additionally adds some files to:
+
+- $HOME/.config/labwc/
+- $HOME/.config/teallach/
 
 # Namespaces
 

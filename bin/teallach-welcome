@@ -1,0 +1,134 @@
+#!/usr/bin/env bash
+
+# shellcheck disable=SC2223,SC2046
+
+force=
+tempfile=$(mktemp /tmp/teallach-welcome.XXXXXXXXXX)
+trap 'rm -f $tempfile' EXIT
+
+: ${TEALLACH_CONFIG_DIR="$HOME/.config/teallach"}
+: ${LABWC_CONFIG_DIR="$HOME/.config/labwc"}
+: ${TEALLACH_BACKGROUND_CLIENT="swaybg"}
+[[ -z $XKB_DEFAULT_LAYOUT ]] || TEALLACH_KEYBOARD_LAYOUT="$XKB_DEFAULT_LAYOUT"
+: ${TEALLACH_KEYBOARD_LAYOUT="us"}
+: ${datarootdir="$HOME/.local/share"}
+
+usage_message="Usage: teallach-welcome [<option>]
+Setup ~/.config/{teallach,labwc}
+Options:
+  -f|--force             Over-write files if they already exist (be careful!)
+"
+
+help_message="Welcome to Teallach
+This setup script installs files to
+~/.config/teallach and ~/.config/labwc
+"
+
+mainmenu() {
+	dialog \
+		--help-button --ok-label Edit --cancel-label Cancel \
+		--extra-button --extra-label Apply \
+		--menu "Teallach Setup Script" 0 0 0 \
+		Background "Background Client    (${TEALLACH_BACKGROUND_CLIENT})" \
+		Layout     "Keyboard Layout      (${TEALLACH_KEYBOARD_LAYOUT})" \
+		2>"$tempfile"
+	button=$?
+	item=$(cat "$tempfile")
+}
+
+show_help_message() {
+	msg=$(mktemp /tmp/teallach-welcome.XXXXXXXXXX)
+	printf '%b\n' "$help_message" > "$msg"
+	dialog --clear --title "textbox" --textbox "$msg" 20 60
+	rm -f "$msg"
+}
+
+choose() {
+	title="$1"
+	var="$2"
+	shift
+	shift
+
+	if ( dialog --menu "$title" 0 0 0 "$@" 2>"$tempfile" ) ; then
+		value=$(cat "$tempfile")
+		eval "$var='$value'"
+	fi
+}
+
+choose_Background() {
+	items=$(mktemp /tmp/teallach-welcome.XXXXXXXXXX)
+	printf '%b\n' "swaybg swaybg" >> "$items"
+	choose "Choose Background Client?" TEALLACH_BACKGROUND_CLIENT $(<"$items")
+	rm -f "$items"
+}
+
+choose_Layout() {
+	items=$(mktemp /tmp/teallach-welcome.XXXXXXXXXX)
+	tl-keyboard-layouts > "$items"
+	choose "Choose Background Client?" TEALLACH_KEYBOARD_LAYOUT $(<"$items")
+	rm -f "$items"
+}
+
+apply () {
+	echo "$LABWC_CONFIG_DIR"
+	mkdir -p "$LABWC_CONFIG_DIR"
+	cp -f "${datarootdir}/teallach/rc.xml" "$LABWC_CONFIG_DIR"
+	cp -f "${datarootdir}/teallach/menu.xml" "$LABWC_CONFIG_DIR"
+	printf '%b\n' "XKB_KEYBOARD_LAYOUT=$TEALLACH_KEYBOARD_LAYOUT" > "$LABWC_CONFIG_DIR/environment"
+
+	mkdir -p "$TEALLACH_CONFIG_DIR"
+	cp -f "${datarootdir}/teallach/menu-schema" "$TEALLACH_CONFIG_DIR"
+	dialog --msgbox "Setup Complete" 8 70
+}
+
+die () {
+	dialog --msgbox "fatal: $1" 8 70
+	clear
+	exit 1
+}
+
+check_dep () {
+	command -v "$*" >/dev/null 2>&1 || { echo "You need $* installed"; exit 1; }
+}
+
+main () {
+	check_dep dialog
+
+	for arg
+	do
+		opt=${arg%%=*}
+		var=${arg#*=}
+		case "$opt" in
+		-f|--force)
+			force=y ;;
+		-h|--help)
+			printf '%b' "$usage_message"; exit 1 ;;
+		*)
+			printf '%b\n' "warn: unknown option $opt" >&2
+			printf '%b' "$usage_message"; exit 1 ;;
+		esac
+	done
+
+	if [[ $force != "y" ]]; then
+		[ -e "$TEALLACH_CONFIG_DIR" ] && die "$TEALLACH_CONFIG_DIR already exists"
+		[ -e "$LABWC_CONFIG_DIR" ] && die "$LABWC_CONFIG_DIR already exists"
+	fi
+
+	mainmenu
+	while [ $button -eq 0 ] || [ $button -eq 2 ] ; do
+		if [ $button -eq 2 ] ; then
+			show_help_message
+		else
+			"choose_$item"
+		fi
+		mainmenu
+	done
+
+	if [ $button -eq 3 ] ; then
+		apply
+	fi
+
+	clear
+}
+
+main "$@"

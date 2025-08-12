@@ -35,6 +35,8 @@ bins="\
 	pkg-config \
 	make \
 	bash \
+	python3 \
+	dialog \
 	labwc-menu-generator
 "
 libs="\
