@@ -1,0 +1,41 @@
+#!/bin/sh
+
+install_tint () {
+	git clone https://github.com/johanmalm/tint.git subprojects/tint
+	cd subprojects/tint
+	meson setup build || exit 1
+	ninja -C build || exit 1
+	rm -f "$HOME/bin/tint"
+	ln -s "$PWD"/build/tint "$HOME/bin"
+	cd ../..
+}
+
+install_labwc_tweaks() {
+	git clone https://github.com/labwc/labwc-tweaks.git subprojects/labwc-tweaks
+	cd subprojects/labwc-tweaks
+	cmake -B build || exit 1
+	cmake --build build || exit 1
+	rm -f "$HOME/bin/labwc-tweaks"
+	ln -s "$PWD"/build/labwc-tweaks "$HOME/bin"
+	cd ../..
+}
+
+install_labwc_menu_generator () {
+	git clone https://github.com/labwc/labwc-menu-generator.git subprojects/labwc-menu-generator
+	cd subprojects/labwc-menu-generator
+	meson setup build || exit 1
+	ninja -C build || exit 1
+	rm -f "$HOME/bin/labwc-menu-generator"
+	ln -s "$PWD"/build/labwc-menu-generator "$HOME/bin"
+	cd ../..
+}
+
+main () {
+	mkdir -p subprojects
+
+	command -v tint || install_tint
+	command -v labwc-tweaks || install_labwc_tweaks
+	command -v labwc-menu-generator || install_labwc_menu_generator
+}
+
+main "$@"
