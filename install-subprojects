@@ -1,7 +1,7 @@
 #!/bin/sh
 
 install_tint () {
-	git clone https://github.com/johanmalm/tint.git subprojects/tint
+	git clone https://github.com/teallach-desktop/tint.git subprojects/tint
 	cd subprojects/tint
 	meson setup build || exit 1
 	ninja -C build || exit 1
