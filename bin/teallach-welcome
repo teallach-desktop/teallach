@@ -74,7 +74,7 @@ apply () {
 	mkdir -p "$LABWC_CONFIG_DIR"
 	cp -f "${datarootdir}/teallach/rc.xml" "$LABWC_CONFIG_DIR"
 	cp -f "${datarootdir}/teallach/menu.xml" "$LABWC_CONFIG_DIR"
-	printf '%b\n' "XKB_KEYBOARD_LAYOUT=$TEALLACH_KEYBOARD_LAYOUT" > "$LABWC_CONFIG_DIR/environment"
+	printf '%b\n' "XKB_DEFAULT_LAYOUT=$TEALLACH_KEYBOARD_LAYOUT" >> "$LABWC_CONFIG_DIR/environment"
 
 	mkdir -p "$TEALLACH_CONFIG_DIR"
 	cp -f "${datarootdir}/teallach/menu-schema" "$TEALLACH_CONFIG_DIR"
