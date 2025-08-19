@@ -65,7 +65,7 @@ choose_Background() {
 choose_Layout() {
 	items=$(mktemp /tmp/teallach-welcome.XXXXXXXXXX)
 	tl-keyboard-layouts > "$items"
-	choose "Choose Background Client?" TEALLACH_KEYBOARD_LAYOUT $(<"$items")
+	choose "Choose Keyboard Layout" TEALLACH_KEYBOARD_LAYOUT $(<"$items")
 	rm -f "$items"
 }
 
