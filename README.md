@@ -31,8 +31,9 @@ when running `./configure`:
 
 - `~/bin/teallach-*`
 - `~/bin/tl-*`
-- `~/.local/share/themes/teallach/`
 - `~/.local/share/teallach/`
+- `~/.local/share/themes/teallach/`
+- `~/.local/share/images/teallach/`
 
 The teallach-welcome script additionally adds some files to:
 
