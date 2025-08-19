@@ -8,7 +8,7 @@ trap 'rm -f $tempfile' EXIT
 
 : ${TEALLACH_CONFIG_DIR="$HOME/.config/teallach"}
 : ${LABWC_CONFIG_DIR="$HOME/.config/labwc"}
-: ${TEALLACH_BACKGROUND_CLIENT="swaybg"}
+: ${TEALLACH_PANEL="tint"}
 [[ -z $XKB_DEFAULT_LAYOUT ]] || TEALLACH_KEYBOARD_LAYOUT="$XKB_DEFAULT_LAYOUT"
 : ${TEALLACH_KEYBOARD_LAYOUT="us"}
 : ${datarootdir="$HOME/.local/share"}
@@ -29,7 +29,7 @@ mainmenu() {
 		--help-button --ok-label Edit --cancel-label Cancel \
 		--extra-button --extra-label Apply \
 		--menu "Teallach Setup Script" 0 0 0 \
-		Background "Background Client    (${TEALLACH_BACKGROUND_CLIENT})" \
+		Panel      "Panel                (${TEALLACH_PANEL})" \
 		Layout     "Keyboard Layout      (${TEALLACH_KEYBOARD_LAYOUT})" \
 		2>"$tempfile"
 	button=$?
@@ -55,10 +55,16 @@ choose() {
 	fi
 }
 
-choose_Background() {
+choose_Panel() {
 	items=$(mktemp /tmp/teallach-welcome.XXXXXXXXXX)
-	printf '%b\n' "swaybg swaybg" >> "$items"
-	choose "Choose Background Client?" TEALLACH_BACKGROUND_CLIENT $(<"$items")
+	panels="tint xfce4-panel lxqt-panel"
+	for panel in $panels; do
+		if ! command -v "$panel" 2>/dev/null; then
+			continue
+		fi
+		printf '%b\n' "$panel $panel" >> "$items"
+	done
+	choose "Choose Panel" TEALLACH_PANEL $(<"$items")
 	rm -f "$items"
 }
 
@@ -74,7 +80,12 @@ apply () {
 	mkdir -p "$LABWC_CONFIG_DIR"
 	cp -f "${datarootdir}/teallach/rc.xml" "$LABWC_CONFIG_DIR"
 	cp -f "${datarootdir}/teallach/menu.xml" "$LABWC_CONFIG_DIR"
+
+	# autostart
 	cp -f "${datarootdir}/teallach/autostart" "$LABWC_CONFIG_DIR"
+	printf '%b\n' "$TEALLACH_PANEL >/dev/null 2>&1 &" >> "$LABWC_CONFIG_DIR/autostart"
+
+	# environment
 	printf '%b\n' "XKB_DEFAULT_LAYOUT=$TEALLACH_KEYBOARD_LAYOUT" >> "$LABWC_CONFIG_DIR/environment"
 
 	mkdir -p "$TEALLACH_CONFIG_DIR"
