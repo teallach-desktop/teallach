@@ -1,0 +1,2 @@
+swaybg -i ~/.local/share/images/teallach/wallpapers/tile.png -m tile >/dev/null 2>&1 &
+

@@ -4,7 +4,7 @@ include ../../../Makefile.inc
 DESKTOP_FILES = menu-schema
 
 # Files that teallach-welcome installs in ~/.config/labwc
-COMPOSITOR_FILES = rc.xml menu.xml
+COMPOSITOR_FILES = rc.xml menu.xml autostart
 
 FILES = \
 	$(DESKTOP_FILES) \
