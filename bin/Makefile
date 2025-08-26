@@ -2,6 +2,7 @@ include ../Makefile.inc
 
 SCRIPTS = \
 	  teallach-welcome \
+	  teallach-nitrogen \
 	  tl-keyboard-layouts \
 	  tl-view-palette
 

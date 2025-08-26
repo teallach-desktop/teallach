@@ -1,0 +1,149 @@
+#!/usr/bin/env python3
+
+import os
+import pathlib
+import sys
+
+from PyQt6 import QtCore
+from PyQt6.QtGui import QBrush, QPen, QColor, QPixmap
+from PyQt6.QtWidgets import (QApplication, QDialog, QHBoxLayout, QVBoxLayout, QGraphicsScene,
+                             QGraphicsView, QGraphicsItem, QGraphicsRectItem, QPushButton,
+                             QGraphicsPixmapItem, QComboBox,)
+
+class Image(QGraphicsItem):
+    BoundingRect = QtCore.QRectF(0, 0, 64, 64)
+    def __init__(self):
+        super(Image, self).__init__()
+    def set_filename(self, filename):
+        self.filename = filename
+    def set_pixmap(self, filename):
+        self.pixmap = QPixmap(filename)
+    def get_filename(self):
+        return self.filename
+    def boundingRect(self):
+        return Image.BoundingRect
+    def paint(self, painter, option, widget):
+        painter.drawPixmap(QtCore.QPoint(0, 0), self.pixmap)
+
+def is_image(filename):
+    if len(filename) < 4:
+        return False
+    return filename[-4:] in ['.png', '.jpg', '.svg']
+
+class Cache: #pylint: disable=too-few-public-methods
+    def __init__(self):
+        self.cache_dir = os.getenv('HOME') + '/.cache/teallach-nitrogen'
+        pathlib.Path(self.cache_dir).mkdir(parents=True, exist_ok=True)
+        dirname = os.getenv('HOME') + '/Pictures'
+        directory = os.fsencode(dirname)
+        for file in os.listdir(directory):
+            filename = os.fsdecode(file)
+            if not is_image(filename):
+                continue
+            path = os.path.join(dirname, filename)
+            st = os.stat(path)
+            try:
+                with open(self.cache_dir + '/' + filename + '.mtime', "r", encoding='utf-8') as f:
+                    mtime = f.read()
+                    if str(st.st_mtime) == mtime:
+                        continue
+            except FileNotFoundError:
+                pass
+            print(f'info: create cache for {path}')
+            pixmap = QPixmap(path)
+            #pixmap = pixmap.scaled(SIZE, SIZE, Qt.KeepAspectRatioByExpanding,
+            #    Qt.SmoothTransformation)
+            pixmap = pixmap.scaled(64, 64)
+            pixmap.save(self.cache_dir + '/' + filename + '.png', "PNG")
+            with open(self.cache_dir + '/' + filename + '.mtime', "w", encoding='utf-8') as f:
+                f.write(str(st.st_mtime))
+
+class Window(QDialog):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle('Teallach Nitrogen')
+        self.mode = 'fill'
+        self.init_layout()
+        self.init_images()
+        self.button_box.addStretch()
+        # mode
+        mode_combobox = QComboBox()
+        mode_combobox.addItems(['fill', 'tile', 'stretch', 'fit', 'center'])
+        mode_combobox.currentTextChanged.connect(self.mode_combobox_text_changed)
+        self.button_box.addWidget(mode_combobox)
+        # apply
+        apply_button = QPushButton(self.tr("&Apply"))
+        apply_button.clicked.connect(self.on_apply_button_press)
+        self.button_box.addWidget(apply_button)
+        # quit
+        quit_button = QPushButton(self.tr("&Quit"))
+        quit_button.setDefault(True)
+        quit_button.clicked.connect(self.on_quit_button_press)
+        self.button_box.addWidget(quit_button)
+
+
+    def init_layout(self):
+        vbox = QVBoxLayout(self)
+        self.setLayout(vbox)
+        self.scene = QGraphicsScene(0, 0, 640, 480)
+        view = QGraphicsView(self.scene)
+        vbox.addWidget(view)
+        self.button_box = QHBoxLayout(self)
+        vbox.addLayout(self.button_box)
+
+    def init_images(self):
+        rect = QGraphicsRectItem(0, 0, 640, 480)
+        rect.setPos(0, 0)
+        brush = QBrush(QColor.fromRgbF(0, 0, 0, 1))
+        pen = QPen(QColor.fromRgbF(0, 0, 0, 1))
+        rect.setBrush(brush)
+        rect.setPen(pen)
+        self.scene.addItem(rect)
+        dirname = os.getenv('HOME') + '/Pictures'
+        directory = os.fsencode(dirname)
+
+        SIZE = 64
+        MARGIN = 4
+        x = MARGIN
+        y = MARGIN
+        for file in os.listdir(directory):
+            filename = os.fsdecode(file)
+            if filename.endswith(".png") or filename.endswith(".jpg") or filename.endswith(".svg"):
+                try:
+                    image = Image()
+                    image.set_filename(dirname + '/' + filename)
+                    image.set_pixmap(os.getenv("HOME") + '/.cache/teallach-nitrogen/' + filename + '.png')
+                    self.scene.addItem(image)
+                    image.setPos(x, y)
+                    image.setFlags(QGraphicsItem.GraphicsItemFlag.ItemIsSelectable)
+                    x += SIZE + MARGIN
+                    if x > 640 - SIZE - MARGIN:
+                        y += SIZE + MARGIN
+                        x = MARGIN
+                except FileNotFoundError:
+                    print(f'error: image {filename} not found in cache')
+
+    def on_quit_button_press(self):
+        sys.exit(0)
+
+    def on_apply_button_press(self):
+        items = self.scene.selectedItems()
+        if len(items) > 0:
+            image = items[0].get_filename()
+            print(f'Set {image}')
+            os.system('pkill swaybg')
+            mode = self.mode if self.mode is not None else 'fill'
+            os.system(f'nohup swaybg -i "{image}" -m {mode} >/dev/null &')
+
+    def mode_combobox_text_changed(self, s):
+        self.mode = s
+
+def main():
+    app = QApplication(sys.argv)
+    cache = Cache()
+    window = Window()
+    window.show()
+    app.exec()
+
+if __name__ == '__main__':
+    main()

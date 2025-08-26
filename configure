@@ -50,6 +50,9 @@ check_core_dependencies () {
 	for lib in $libs; do
 		check_lib "$lib"
 	done
+
+	./configure-helpers/check-dep-pyqt6.py
+	print_ok_fail $? PyQt6
 }
 
 check_prefix_in_path () {
