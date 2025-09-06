@@ -47,10 +47,14 @@ nr_args(gchar **argv)
 void
 create_menu(gchar **argv)
 {
-	if (nr_args(argv) != 1) {
+	if (nr_args(argv) < 1) {
 		return;
 	}
-	printf("<menu id=\"%s\" label=\"%s\">\n", argv[0], argv[0]);
+	if (nr_args(argv) == 2) {
+		printf("<menu id=\"%s\" label=\"%s\" icon=\"%s\">\n", argv[0], argv[0], argv[1]);
+	} else {
+		printf("<menu id=\"%s\" label=\"%s\">\n", argv[0], argv[0]);
+	}
 }
 
 void
@@ -59,7 +63,7 @@ create_sep(gchar **argv)
 	if (nr_args(argv) != 0) {
 		return;
 	}
-	printf("<separator/>");
+	printf("<separator/>\n");
 }
 
 void
@@ -87,11 +91,17 @@ create_exit(gchar **argv)
 void
 create_item(gchar **argv)
 {
-	if (nr_args(argv) != 2) {
+	if (nr_args(argv) < 2) {
 		return;
 	}
-	printf("<item label=\"%s\">", argv[0]);
-	printf("  <action name=\"Execute\"><command><![CDATA[%s]]></command></action>", argv[1]);
+	printf("<item label=\"%s\"", argv[0]);
+	if (nr_args(argv) == 3) {
+		printf(" icon=\"%s\">\n", argv[1]);
+		printf("  <action name=\"Execute\"><command><![CDATA[%s]]></command></action>\n", argv[2]);
+	} else {
+		printf(">\n");
+		printf("  <action name=\"Execute\"><command><![CDATA[%s]]></command></action>\n", argv[1]);
+	}
 	printf("</item>\n");
 }
 
