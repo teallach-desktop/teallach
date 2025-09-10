@@ -1,0 +1,3 @@
+#!/bin/sh
+
+labwc -C ~/.config/teallach

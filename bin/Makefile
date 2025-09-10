@@ -1,6 +1,7 @@
 include ../Makefile.inc
 
 SCRIPTS = \
+	  teallach \
 	  teallach-welcome \
 	  teallach-nitrogen \
 	  tl-keyboard-layouts \

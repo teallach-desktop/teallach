@@ -37,8 +37,7 @@ when running `./configure`:
 
 The teallach-welcome script additionally adds some files to:
 
-- $HOME/.config/labwc/
-- $HOME/.config/teallach/
+- `~/.config/teallach/`
 
 # Namespaces
 
