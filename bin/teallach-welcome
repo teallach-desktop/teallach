@@ -86,6 +86,7 @@ apply () {
 	printf '%b\n' "$TEALLACH_PANEL >/dev/null 2>&1 &" >> "$LABWC_CONFIG_DIR/autostart"
 
 	# environment
+	cp -f "${datarootdir}/teallach/environment" "$LABWC_CONFIG_DIR"
 	printf '%b\n' "XKB_DEFAULT_LAYOUT=$TEALLACH_KEYBOARD_LAYOUT" >> "$LABWC_CONFIG_DIR/environment"
 
 	mkdir -p "$TEALLACH_CONFIG_DIR"

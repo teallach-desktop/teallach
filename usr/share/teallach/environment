@@ -1,0 +1,12 @@
+WLR_SCENE_DISABLE_VISIBILITY=1
+XDG_CURRENT_DESKTOP=teallach:wlroots
+_JAVA_AWT_WM_NONREPARENTING=1
+QT_QPA_PLATFORMTHEME=qt6ct
+XKB_DEFAULT_OPTIONS=grp:shift_caps_toggle
+XCURSOR_THEME=Adwaita
+XCURSOR_SIZE=24
+LABWC_FALLBACK_OUTPUT=NOOP-fallback
+
+# We do not set this here because it is configured by the teallach-welcome
+# install script.
+#XKB_DEFAULT_LAYOUT=gb,se
