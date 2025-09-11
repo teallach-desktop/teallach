@@ -130,9 +130,14 @@ class Window(QDialog):
         items = self.scene.selectedItems()
         if len(items) > 0:
             image = items[0].get_filename()
-            print(f'Set {image}')
             os.system('pkill swaybg')
             mode = self.mode if self.mode is not None else 'fill'
+            with open(os.path.join(os.path.expanduser('~'), '.config/teallach', "wallrc"), "w", encoding="utf-8") as f:
+              f.write(f'IMAGE={image}\n')
+            with open(os.path.join(os.path.expanduser('~'), '.config/teallach', "wallrc"), "a", encoding="utf-8") as f:
+              f.write(f'MODE={mode}\n')
+            with open(os.path.join(os.path.expanduser('~'), '.config/teallach', "wallrc"), "r", encoding="utf-8") as f:
+              print(f.read())
             os.system(f'nohup swaybg -i "{image}" -m {mode} >/dev/null &')
 
     def mode_combobox_text_changed(self, s):
