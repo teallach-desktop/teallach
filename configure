@@ -34,10 +34,15 @@ check_lib () {
 bins="\
 	pkg-config \
 	make \
+	gcc \
 	bash \
 	python3 \
 	dialog \
-	labwc-menu-generator
+	labwc-menu-generator \
+	swaybg \
+	foot \
+	meson \
+	wtype \
 "
 libs="\
 	glib-2.0 \
