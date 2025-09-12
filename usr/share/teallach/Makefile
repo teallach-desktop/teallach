@@ -2,6 +2,7 @@ include ../../../Makefile.inc
 
 FILES = \
 	menu-schema \
+	tintrc \
 	rc.xml \
 	menu.xml \
 	autostart \

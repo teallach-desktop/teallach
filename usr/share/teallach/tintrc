@@ -1,0 +1,40 @@
+#-------------------------------------
+# Background 1: Panel
+rounded = 0
+background_color = #282828 100
+border_color = #282828 100
+
+# Background 2: Inactive Task
+rounded = 4
+background_color = #000000 0
+border_color = #000000 0
+
+# Background 3: Active task
+rounded = 4
+background_color = #909090 7
+border_color = #909090 30
+
+#-------------------------------------
+# Panel
+panel_items = TC
+panel_size = _ 36
+panel_background_id = 1
+
+#-------------------------------------
+# Taskbar
+taskbar_background_id = 0
+taskbar_padding = 2 2 2
+
+# Task
+task_background_id = 2
+task_active_background_id = 3
+task_maximum_size = 150 _
+task_font = Sans _ 10
+task_font_color = #909090 100
+
+#-------------------------------------
+# Clock
+clock_background_id = 0
+time1_font = Sans _ 12
+clock_font_color = #909090 100
+
