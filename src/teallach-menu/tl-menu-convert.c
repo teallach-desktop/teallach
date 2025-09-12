@@ -59,7 +59,7 @@ create_sep(gchar **argv)
 	if (nr_args(argv) != 0) {
 		return;
 	}
-	printf("<separator/>");
+	printf("<separator/>\n");
 }
 
 void
