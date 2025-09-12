@@ -83,7 +83,11 @@ apply () {
 
 	# autostart
 	cp -f "${datarootdir}/teallach/autostart" "$LABWC_CONFIG_DIR"
-	printf '%b\n' "$TEALLACH_PANEL >/dev/null 2>&1 &" >> "$LABWC_CONFIG_DIR/autostart"
+	if [[ "$TEALLACH_PANEL" = "tint" ]]; then
+		printf '%b\n' "tl-tint-run" >> "$LABWC_CONFIG_DIR/autostart"
+	else
+		printf '%b\n' "$TEALLACH_PANEL >/dev/null 2>&1 &" >> "$LABWC_CONFIG_DIR/autostart"
+	fi
 
 	# environment
 	cp -f "${datarootdir}/teallach/environment" "$LABWC_CONFIG_DIR"

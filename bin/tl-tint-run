@@ -1,0 +1,8 @@
+#!/bin/sh
+
+killall tint
+
+wlr-randr | grep -v '^ ' | awk '{ printf $1 "\n" }' | while read -r output; do
+    printf '%b\n' "start tint on output $output"
+    nohup tint -o $output -c "$HOME/.local/share/teallach/tintrc" >/dev/null 2>&1 &
+done

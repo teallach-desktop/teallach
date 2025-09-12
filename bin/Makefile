@@ -5,6 +5,7 @@ SCRIPTS = \
 	  teallach-welcome \
 	  teallach-nitrogen \
 	  tl-keyboard-layouts \
+	  tl-tint-run \
 	  tl-view-palette
 
 all:
