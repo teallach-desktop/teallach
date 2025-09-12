@@ -2,7 +2,6 @@
 <labwc_config>
   <core>
     <gap>5</gap>
-    <disableMaximizedServerDecor>yes</disableMaximizedServerDecor>
   </core>
   <theme>
     <name>teallach</name>
@@ -13,6 +12,10 @@
     </titlebar>
     <cornerRadius>5</cornerRadius>
     <dropShadows>yes</dropShadows>
+    <font>
+      <name>Ubuntu</name>
+      <size>10</size>
+    </font>
   </theme>
   <resize>
     <drawContents>no</drawContents>
@@ -24,6 +27,9 @@
       <name>3</name>
     </names>
   </desktops>
+  <windowSwitcher>
+    <style>thumbnail</style>
+  </windowSwitcher>
   <menu>
     <showIcons>yes</showIcons>
   </menu>
@@ -31,19 +37,26 @@
     <default/>
     <layoutScope>window</layoutScope>
     <keybind key="Super_L" onRelease="true">
-      <action name="Execute" command="wmenu-run"/>
+      <action name="ShowMenu" menu="root-menu"/>
+    </keybind>
+    <!-- For `wtype -M logo -P space` from tint panel (not yet implemented) -->
+    <keybind key="W-Space">
+      <action name="ShowMenu" menu="root-menu"/>
     </keybind>
     <keybind key="W-l" name.action="Execute" command.action="swaylock -c 000000"/>
     <keybind key="W-F7" name.action="Execute" command.action="wf-recorder --output eDP-1"/>
     <keybind key="W-F10" name.action="Execute" command.action="killall SIGINT wf-recorder"/>
     <keybind key="C-Escape" name.action="Execute" command.action="wmenu-run"/>
     <keybind key="W-F12" name.action="Debug"/>
-    <keybind key="F12" name.action="ToggleKeybinds"/>
+    <keybind key="F9" name.action="ToggleKeybinds"/>
     <keybind key="W-m">
       <action name="GrowToEdge" direction="up"/>
       <action name="GrowToEdge" direction="down"/>
       <action name="GrowToEdge" direction="left"/>
       <action name="GrowToEdge" direction="right"/>
+    </keybind>
+    <keybind key="W-Home">
+      <action name="UnSnap"/>
     </keybind>
     <keybind key="W-S-Left">
       <action name="ShrinkToEdge" direction="left"/>
@@ -58,16 +71,16 @@
       <action name="GrowToEdge" direction="down"/>
     </keybind>
     <keybind key="C-W-Left">
-      <action name="SnapToEdge" direction="left"/>
+      <action name="MoveToEdge" direction="left"/>
     </keybind>
     <keybind key="C-W-Right">
-      <action name="SnapToEdge" direction="right"/>
+      <action name="MoveToEdge" direction="right"/>
     </keybind>
     <keybind key="C-W-Up">
-      <action name="SnapToEdge" direction="up"/>
+      <action name="MoveToEdge" direction="up"/>
     </keybind>
     <keybind key="C-W-Down">
-      <action name="SnapToEdge" direction="down"/>
+      <action name="MoveToEdge" direction="down"/>
     </keybind>
     <keybind key="Print">
       <action name="Execute">
