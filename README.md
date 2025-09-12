@@ -1,5 +1,14 @@
 <h2 align="center">Teallach</h2>
 
+```
+ _             _ _            _
+| |           | | |          | |
+| |_ ___  __ _| | | __ _  ___| |__
+| __/ _ \/ _` | | |/ _` |/ __| '_ \
+|  \  __/ (_| | | | (_| | (__| | | |
+ \__\___|\__,_|_|_|\__,_|\___|_| |_|
+```
+
 # Name
 
 In Gaelic teallach means forge, hearth, fireplace or even the large stone that
@@ -16,15 +25,16 @@ Informal bumbles of ideas forming a thin veneer on top of labwc.
 
 - [x] `teallach-welcome`: a setup script to choose keyboard layout and so on
 - [x] `teallach-menu`: a configurable wrapper for labwc-menu-generator
-- [ ] `teallach-nitrogen`: wallpaper browser and swaybg wrapper
-- [ ] `tint`: a Wayland panel inspired by tint2
+- [x] `teallach-nitrogen`: wallpaper browser and swaybg wrapper
+- [x] `tint`: a Wayland panel inspired by tint2
 
 # How
 
     ./configure
-	make
-	make install
+    make
+    make install
     teallach-welcome
+    teallach
 
 Files will be installed as follows (unless you specify a different `--prefix`
 when running `./configure`:
