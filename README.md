@@ -51,7 +51,7 @@ The teallach-welcome script additionally adds some files to:
 
 # Namespaces
 
-We use `teallach` for porcelain commands, and `tl` for plubming commands.
+We use `teallach` for porcelain commands, and `tl` for plumbing commands.
 
 # License
 
