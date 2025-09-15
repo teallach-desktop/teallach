@@ -3,6 +3,7 @@ include ../../../Makefile.inc
 
 FILES = \
 	menu-schema \
+	no-display-desktop-entries \
 	tintrc \
 	rc.xml \
 	menu.xml \

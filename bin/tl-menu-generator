@@ -1,0 +1,3 @@
+#!/bin/sh
+
+labwc-menu-generator -b -t foot -i "$(tl-datarootdir)/teallach/no-display-desktop-entries"

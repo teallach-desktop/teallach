@@ -7,6 +7,7 @@ SCRIPTS = \
 	  teallach-nitrogen \
 	  tl-keyboard-layouts \
 	  tl-tint-run \
+	  tl-menu-generator \
 	  tl-view-palette
 
 all:

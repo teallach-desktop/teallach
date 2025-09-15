@@ -2,5 +2,5 @@ if [ -r ~/.config/teallach/wallrc ]; then
   . ~/.config/teallach/wallrc
   swaybg -i "$IMAGE" -m "$MODE" >/dev/null 2>&1 &
 else
-  swaybg -i ~/.local/share/images/teallach/wallpapers/tile.png -m tile >/dev/null 2>&1 &
+  swaybg -i "$(tl-datarootdir)/images/teallach/wallpapers/tile.png" -m tile >/dev/null 2>&1 &
 fi

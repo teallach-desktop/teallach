@@ -1,7 +1,6 @@
 gammastep-indicator.desktop
 libreoffice-startcenter.desktop
 cmake-gui.desktop
-electron27.desktop
 org.gtk.IconBrowser4.desktop
 org.gtk.gtk4.NodeEditor.desktop
 org.gtk.PrintEditor4.desktop
@@ -27,7 +26,19 @@ rofi-theme-selector.desktop
 xfce4-about.desktop
 gpicview.desktop
 vim.desktop
+electron27.desktop
+electron28.desktop
+electron29.desktop
+electron30.desktop
+electron31.desktop
 electron32.desktop
+electron33.desktop
+electron34.desktop
+electron35.desktop
+electron36.desktop
+electron37.desktop
+electron38.desktop
+electron39.desktop
 org.gtk.Demo4.desktop
 assistant.desktop
 qdbusviewer.desktop
