@@ -1,3 +1,4 @@
+include ../../config.mk
 include ../../Makefile.inc
 
 CFLAGS ?= -g -Wall
@@ -15,8 +16,8 @@ tl-menu-convert: tl-menu-convert.c
 	$(QUIET_CC)$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 install:
-	install -m 755 -d $(bindir)
-	install -m 755 $(PROG) $(SCRIPT) $(bindir)
+	install -m 755 -d $(DESTDIR)$(bindir)
+	install -m 755 $(PROG) $(SCRIPT) $(DESTDIR)$(bindir)
 
 clean:
 	@$(RM) -f $(PROG)

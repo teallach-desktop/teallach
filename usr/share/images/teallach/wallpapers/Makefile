@@ -1,3 +1,4 @@
+include ../../../../../config.mk
 include ../../../../../Makefile.inc
 
 FILES = \
@@ -7,5 +8,5 @@ all:
 	@echo no-op
 
 install: $(FILES)
-	@mkdir -p $(DESTDIR)$(datarootdir)/images/teallach/wallpapers
+	install -m 755 -d $(DESTDIR)$(datarootdir)/images/teallach/wallpapers
 	install -m644 $^ $(DESTDIR)$(datarootdir)/images/teallach/wallpapers

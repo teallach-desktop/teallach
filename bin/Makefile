@@ -1,3 +1,4 @@
+include ../config.mk
 include ../Makefile.inc
 
 SCRIPTS = \
@@ -12,5 +13,5 @@ all:
 	@echo no-op
 
 install: $(SCRIPTS)
-	@mkdir -p $(DESTDIR)$(bindir)
+	install -m 755 -d $(DESTDIR)$(bindir)
 	install -m755 $^ $(DESTDIR)$(bindir)

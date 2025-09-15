@@ -1,3 +1,4 @@
+include ../../../../config.mk
 include ../../../../Makefile.inc
 
 ICONS = $(patsubst ./%,%,$(shell find ./labwc -maxdepth 1 -name '*.xbm' -print))
