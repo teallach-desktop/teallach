@@ -11,7 +11,7 @@ trap 'rm -f $tempfile' EXIT
 : ${TEALLACH_PANEL="tint"}
 [[ -z $XKB_DEFAULT_LAYOUT ]] || TEALLACH_KEYBOARD_LAYOUT="$XKB_DEFAULT_LAYOUT"
 : ${TEALLACH_KEYBOARD_LAYOUT="us"}
-: ${datarootdir="$HOME/.local/share"}
+: ${TEALLACH_DATAROOTDIR="$(tl-datarootdir)"}
 
 usage_message="Usage: teallach-welcome [<option>]
 Setup ~/.config/{teallach,labwc}
@@ -78,11 +78,11 @@ choose_Layout() {
 apply () {
 	echo "$LABWC_CONFIG_DIR"
 	mkdir -p "$LABWC_CONFIG_DIR"
-	cp -f "${datarootdir}/teallach/rc.xml" "$LABWC_CONFIG_DIR"
-	cp -f "${datarootdir}/teallach/menu.xml" "$LABWC_CONFIG_DIR"
+	cp -f "${TEALLACH_DATAROOTDIR}/teallach/rc.xml" "$LABWC_CONFIG_DIR"
+	cp -f "${TEALLACH_DATAROOTDIR}/teallach/menu.xml" "$LABWC_CONFIG_DIR"
 
 	# autostart
-	cp -f "${datarootdir}/teallach/autostart" "$LABWC_CONFIG_DIR"
+	cp -f "${TEALLACH_DATAROOTDIR}/teallach/autostart" "$LABWC_CONFIG_DIR"
 	if [[ "$TEALLACH_PANEL" = "tint" ]]; then
 		printf '%b\n' "tl-tint-run" >> "$LABWC_CONFIG_DIR/autostart"
 	else
@@ -90,11 +90,11 @@ apply () {
 	fi
 
 	# environment
-	cp -f "${datarootdir}/teallach/environment" "$LABWC_CONFIG_DIR"
+	cp -f "${TEALLACH_DATAROOTDIR}/teallach/environment" "$LABWC_CONFIG_DIR"
 	printf '%b\n' "XKB_DEFAULT_LAYOUT=$TEALLACH_KEYBOARD_LAYOUT" >> "$LABWC_CONFIG_DIR/environment"
 
 	mkdir -p "$TEALLACH_CONFIG_DIR"
-	cp -f "${datarootdir}/teallach/menu-schema" "$TEALLACH_CONFIG_DIR"
+	cp -f "${TEALLACH_DATAROOTDIR}/teallach/menu-schema" "$TEALLACH_CONFIG_DIR"
 	dialog --msgbox "Setup Complete" 8 70
 }
 
