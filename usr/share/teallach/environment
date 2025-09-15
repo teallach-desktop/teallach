@@ -7,6 +7,9 @@ XCURSOR_THEME=Adwaita
 XCURSOR_SIZE=24
 LABWC_FALLBACK_OUTPUT=NOOP-fallback
 
+# For labwc-tweaks
+LABWC_CONFIG_DIR=$HOME/.config/teallach
+
 # We do not set this here because it is configured by the teallach-welcome
 # install script.
 #XKB_DEFAULT_LAYOUT=gb,se
