@@ -1,5 +1,5 @@
-item Browser "firefox https://labwc.github.io"
-item Terminal "foot zsh"
+item Browser firefox
+item Terminal foot
 item Senpai "foot senpai"
 item Tweaks labwc-tweaks
 
