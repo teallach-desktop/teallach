@@ -9,6 +9,7 @@ install:
 	@$(MAKE) -C usr/share/teallach $@
 	@$(MAKE) -C usr/share/themes/teallach $@
 	@$(MAKE) -C usr/share/images/teallach/wallpapers $@
+	@$(MAKE) -C usr/share/wayland-sessions $@
 	@$(MAKE) -C bin $@
 
 uninstall:
