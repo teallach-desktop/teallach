@@ -13,8 +13,8 @@
     <cornerRadius>5</cornerRadius>
     <dropShadows>yes</dropShadows>
     <font>
-      <name>Ubuntu</name>
-      <size>10</size>
+      <name>Sans</name>
+      <size>9</size>
     </font>
   </theme>
   <resize>
