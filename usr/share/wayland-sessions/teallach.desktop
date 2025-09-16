@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Teallach
+Comment=Desktop Environment
+Exec=teallach
+Icon=teallach
+Type=Application
+DesktopNames=teallach;wlroots
