@@ -35,14 +35,17 @@ bins="\
 	pkg-config \
 	make \
 	gcc \
+	scdoc \
+	meson \
 	bash \
 	python3 \
 	dialog \
-	labwc-menu-generator \
 	swaybg \
 	foot \
-	meson \
+	wlr-randr \
 	wtype \
+	labwc-menu-generator \
+	hyprpicker \
 "
 libs="\
 	glib-2.0 \
