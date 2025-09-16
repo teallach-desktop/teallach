@@ -16,7 +16,7 @@ uninstall:
 	$(RM) -r $(DESTDIR)$(datarootdir)/teallach
 	$(RM) -r $(DESTDIR)$(datarootdir)/themes/teallach
 	$(RM) -r $(DESTDIR)$(datarootdir)/images/teallach
-	$(RM) -f $(DESTDIR)$(bindir)/teallach-*
+	$(RM) -f $(DESTDIR)$(bindir)/teallach*
 	$(RM) -f $(DESTDIR)$(bindir)/tl-*
 
 clean:
