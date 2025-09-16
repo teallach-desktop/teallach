@@ -37,7 +37,7 @@ Informal bumbles of ideas forming a thin veneer on top of labwc.
     teallach
 
 Files will be installed as follows (unless you specify a different `--prefix`
-when running `./configure`:
+when running `./configure`):
 
 - `~/bin/teallach-*`
 - `~/bin/tl-*`
