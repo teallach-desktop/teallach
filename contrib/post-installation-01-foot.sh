@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir -p ~/.config/foot
+
 cat > ~/.config/foot/foot.ini <<- EOF
 	[main]
 	include = /usr/share/foot/themes/apprentice
