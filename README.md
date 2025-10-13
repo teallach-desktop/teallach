@@ -1,7 +1,9 @@
 <div align="center">
-<img src="https://teallach-desktop.github.io/images/bang-light.png"/></center>
-<p>[https://teallach-desktop.github.io/](https://teallach-desktop.github.io/)</p>
+<img src="https://teallach-desktop.github.io/images/bang-light.png"/>
+<p>[https://teallach-desktop.github.io/]</p>
 </div>
+
+[https://teallach-desktop.github.io/]: https://teallach-desktop.github.io/
 
 # Name
 
