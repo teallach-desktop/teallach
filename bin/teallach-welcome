@@ -94,7 +94,7 @@ apply () {
 	printf '%b\n' "XKB_DEFAULT_LAYOUT=$TEALLACH_KEYBOARD_LAYOUT" >> "$LABWC_CONFIG_DIR/environment"
 
 	mkdir -p "$TEALLACH_CONFIG_DIR"
-	cp -f "${TEALLACH_DATAROOTDIR}/teallach/menu-schema" "$TEALLACH_CONFIG_DIR"
+	cp -f "${TEALLACH_DATAROOTDIR}/teallach/teallach-menu.conf" "$TEALLACH_CONFIG_DIR"
 	dialog --msgbox "Setup Complete" 8 70
 }
 

@@ -2,7 +2,7 @@ include ../../../config.mk
 include ../../../Makefile.inc
 
 FILES = \
-	menu-schema \
+	teallach-menu.conf \
 	no-display-desktop-entries \
 	tintrc \
 	rc.xml \

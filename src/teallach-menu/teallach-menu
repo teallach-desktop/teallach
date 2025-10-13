@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 : ${TL_CONFIG_DIR=$HOME/.config/teallach}
-filename="$TL_CONFIG_DIR/menu-schema"
+filename="$TL_CONFIG_DIR/teallach-menu.conf"
 
 [[ -e "$filename" ]] || { printf "fatal: no menu file"; exit 1; }
 tl-menu-convert < "$filename"
