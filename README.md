@@ -1,13 +1,7 @@
-<h2 align="center">Teallach</h2>
-
-```
- _             _ _            _
-| |           | | |          | |
-| |_ ___  __ _| | | __ _  ___| |__
-| __/ _ \/ _` | | |/ _` |/ __| '_ \
-|  \  __/ (_| | | | (_| | (__| | | |
- \__\___|\__,_|_|_|\__,_|\___|_| |_|
-```
+<div align="center">
+<img src="https://teallach-desktop.github.io/images/bang-light.png"/></center>
+<p>[https://teallach-desktop.github.io/](https://teallach-desktop.github.io/)</p>
+</div>
 
 # Name
 
