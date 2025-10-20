@@ -26,6 +26,11 @@ Informal bumbles of ideas forming a thin veneer on top of labwc.
 
 # How
 
+If you do not have `tint`, `labwc-menu-generator` and/or `labwc-tweaks`, then
+you can run `./install-subprojects` from the toplevel directory.
+
+Then just run:
+
     ./configure
     make
     make install
