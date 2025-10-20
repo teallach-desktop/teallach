@@ -21,7 +21,7 @@ Options:
 
 help_message="Welcome to Teallach
 This setup script installs files to
-~/.config/teallach and ~/.config/labwc
+~/.config/teallach
 "
 
 mainmenu() {
