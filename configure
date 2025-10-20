@@ -44,6 +44,7 @@ bins="\
 	foot \
 	wlr-randr \
 	wtype \
+	wf-recorder \
 	labwc-menu-generator \
 "
 libs="\
