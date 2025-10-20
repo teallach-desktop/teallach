@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+
+import argparse
+import os
+import sys
+
+def parse_one_app(path):
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            lines = f.read().split("\n")
+            inside = False
+            for line in lines:
+                if line.startswith("["):
+                    inside = line == "[Desktop Entry]"
+                    continue
+                if inside:
+                    if "=" in line:
+                        key, value = line.split("=", 1)
+                        if key == "Exec":
+                            cmd = value.split("%", 1)[0]
+                            print(f'run {cmd}')
+                            os.system(cmd)
+    except:
+        print(f"warn: error reading '{path}'", file=sys.stderr)
+
+def exec_desktop_entry(name):
+    paths = ['/usr/share/applications']
+    for path in paths:
+        for (_, _, filenames) in os.walk(path):
+            for filename in filenames:
+                if filename != name:
+                    continue
+                parse_one_app(path + '/' + filename)
+
+def main():
+    parser = argparse.ArgumentParser(prog="tl-open-desktop-entry")
+    parser.add_argument("filename", help="Name of .desktop file")
+    args = parser.parse_args()
+    if args.filename is None:
+        sys.exit()
+    exec_desktop_entry(args.filename)
+
+if __name__ == '__main__':
+    main()

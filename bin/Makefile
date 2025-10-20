@@ -8,6 +8,7 @@ SCRIPTS = \
 	  tl-keyboard-layouts \
 	  tl-tint-run \
 	  tl-menu-generator \
+	  tl-open-desktop-entry \
 	  tl-view-palette
 
 all:
