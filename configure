@@ -45,7 +45,6 @@ bins="\
 	wlr-randr \
 	wtype \
 	labwc-menu-generator \
-	hyprpicker \
 "
 libs="\
 	glib-2.0 \
