@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Teallach Nitrogen
+GenericName=Wallpaper Settings Tool
+Comment=Wrapper for swaybg to set background image
+Exec=teallach-nitrogen
+Terminal=false
+Icon=nitrogen
+Categories=System
+StartupNotify=false

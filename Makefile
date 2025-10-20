@@ -10,6 +10,7 @@ install:
 	@$(MAKE) -C usr/share/themes/teallach $@
 	@$(MAKE) -C usr/share/images/teallach/wallpapers $@
 	@$(MAKE) -C usr/share/wayland-sessions $@
+	@$(MAKE) -C usr/share/applications $@
 	@$(MAKE) -C bin $@
 
 uninstall:
@@ -18,6 +19,8 @@ uninstall:
 	$(RM) -r $(DESTDIR)$(datarootdir)/images/teallach
 	$(RM) -f $(DESTDIR)$(bindir)/teallach*
 	$(RM) -f $(DESTDIR)$(bindir)/tl-*
+	$(RM) -r $(DESTDIR)$(datarootdir)/wayland-sessions/teallach-*
+	$(RM) -r $(DESTDIR)$(datarootdir)/applications/teallach-*
 
 clean:
 	@$(MAKE) -C src/teallach-menu $@
