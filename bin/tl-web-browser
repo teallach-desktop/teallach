@@ -1,0 +1,3 @@
+#!/bin/sh
+
+tl-open-desktop-entry "$(xdg-settings get default-web-browser)"

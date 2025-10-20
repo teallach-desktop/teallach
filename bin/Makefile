@@ -9,6 +9,7 @@ SCRIPTS = \
 	  tl-tint-run \
 	  tl-menu-generator \
 	  tl-open-desktop-entry \
+	  tl-web-browser \
 	  tl-view-palette
 
 all:

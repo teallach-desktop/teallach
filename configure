@@ -45,6 +45,7 @@ bins="\
 	wlr-randr \
 	wtype \
 	wf-recorder \
+	xdg-settings \
 	labwc-menu-generator \
 "
 libs="\
