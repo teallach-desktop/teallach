@@ -1,6 +1,6 @@
 <div align="center">
-<img src="https://teallach-desktop.github.io/images/bang-light.png"/>
-<p>[https://teallach-desktop.github.io/]</p>
+  <img src="https://teallach-desktop.github.io/images/bang-light.png"/>
+  <p>[https://teallach-desktop.github.io/]</p>
 </div>
 
 [https://teallach-desktop.github.io/]: https://teallach-desktop.github.io/
@@ -26,8 +26,10 @@ Informal bumbles of ideas forming a thin veneer on top of labwc.
 
 # How
 
-If you do not have `tint`, `labwc-menu-generator` and/or `labwc-tweaks`, then
-you can run `./install-subprojects` from the toplevel directory.
+If you do not have `tint`, `labwc-menu-generator` and/or `labwc-tweaks`, you
+can install these with:
+
+    ./install-subprojects
 
 Then just run:
 
@@ -45,6 +47,8 @@ when running `./configure`):
 - `~/.local/share/teallach/`
 - `~/.local/share/themes/teallach/`
 - `~/.local/share/images/teallach/`
+- `~/.local/share/wayland-sessions/teallach-*`
+- `~/.local/share/applications/teallach-*`
 
 The teallach-welcome script additionally adds some files to:
 
