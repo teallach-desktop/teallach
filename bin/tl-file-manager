@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# tl-file-manager [<path>]
+#
+
+: ${TEALLACH_FILE_MANAGER=xdg-open}
+: ${path=.}
+
+if [ $# != 0 ]; then
+	path="$*"
+fi
+
+${TEALLACH_FILE_MANAGER} $path

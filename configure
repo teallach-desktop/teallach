@@ -46,6 +46,7 @@ bins="\
 	wtype \
 	wf-recorder \
 	xdg-settings \
+	xdg-open \
 	labwc-menu-generator \
 "
 libs="\

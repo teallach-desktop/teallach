@@ -10,6 +10,7 @@ SCRIPTS = \
 	  tl-menu-generator \
 	  tl-open-desktop-entry \
 	  tl-web-browser \
+	  tl-file-manager \
 	  tl-view-palette
 
 all:
