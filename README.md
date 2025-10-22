@@ -1,9 +1,4 @@
-<div align="center">
-  <img src="https://teallach-desktop.github.io/images/bang-light.png"/>
-  <p>[https://teallach-desktop.github.io/]</p>
-</div>
-
-[https://teallach-desktop.github.io/]: https://teallach-desktop.github.io/
+<img src="https://teallach-desktop.github.io/images/bang-light.png"/>
 
 # Name
 
@@ -16,6 +11,8 @@ furnace.
 There is profound beauty in a simple openbox/tint2 setup.
 
 # What
+
+[teallach-desktop.github.io]
 
 Informal bumbles of ideas forming a thin veneer on top of labwc.
 
@@ -61,3 +58,5 @@ We use `teallach` for porcelain commands, and `tl` for plumbing commands.
 # License
 
 GPL3 to align with BunsenLabs and Deadbang for easier sharing.
+
+[teallach-desktop.github.io]: https://teallach-desktop.github.io/
