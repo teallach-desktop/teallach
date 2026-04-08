@@ -28,7 +28,7 @@
     </names>
   </desktops>
   <windowSwitcher>
-    <style>thumbnail</style>
+    <osd style="thumbnail" />
   </windowSwitcher>
   <menu>
     <showIcons>yes</showIcons>
@@ -47,6 +47,7 @@
     <keybind key="W-F7" name.action="Execute" command.action="wf-recorder --output eDP-1"/>
     <keybind key="W-F10" name.action="Execute" command.action="killall SIGINT wf-recorder"/>
     <keybind key="C-Escape" name.action="Execute" command.action="wmenu-run"/>
+    <keybind key="C-W-F12" name.action="DebugToggleKeyStateIndicator" />
     <keybind key="W-F12" name.action="Debug"/>
     <keybind key="F9" name.action="ToggleKeybinds"/>
     <keybind key="W-m">
@@ -57,6 +58,12 @@
     </keybind>
     <keybind key="W-Home">
       <action name="UnSnap"/>
+    </keybind>
+    <keybind key="W-0">
+      <action name="Autoplace" policy="center" />
+    </keybind>
+    <keybind key="W-d">
+      <action name="ToggleShowDesktop" />
     </keybind>
     <keybind key="W-S-Left">
       <action name="ShrinkToEdge" direction="left"/>
@@ -133,10 +140,12 @@
     </context>
     <context name="Frame">
       <mousebind direction="W-S-Up" action="Scroll">
-        <action name="ResizeRelative" left="10" right="10" top="10" bottom="10"/>
+        <action name="ResizeRelative" left="36%" right="36%" top="20%" bottom="20%" />
+        <action name="Autoplace" policy="center" />
       </mousebind>
       <mousebind direction="W-S-Down" action="Scroll">
-        <action name="ResizeRelative" left="-10" right="-10" top="-10" bottom="-10"/>
+        <action name="ResizeRelative" left="-36%" right="-36%" top="-20%" bottom="-20%" />
+        <action name="Autoplace" policy="center" />
       </mousebind>
     </context>
   </mouse>
