@@ -4,3 +4,5 @@ if [ -r ~/.config/teallach/wallrc ]; then
 else
   swaybg -i "$(tl-datarootdir)/images/teallach/wallpapers/tile.png" -m tile >/dev/null 2>&1 &
 fi
+
+tl-output-power-management &

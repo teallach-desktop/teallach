@@ -1,0 +1,30 @@
+#!/bin/sh
+
+printf '%b\n' '<menu id="help" label="Help" icon="help">
+  <separator label="Online Help" />
+
+  <item label="labwc.github.io" icon="applications-development-web">
+    <action name="Execute"><command><![CDATA[firefox https://labwc.github.io]]></command></action>
+  </item>
+
+  <separator label="Man Pages" />
+
+  <item label="labwc(1)" icon="deepin-manual">
+    <action name="Execute" command="foot -e 'man 1 labwc'" />
+  </item>
+  <item label="labwc-config(5)" icon="deepin-manual">
+    <action name="Execute" command="foot -e 'man 5 labwc-config'" />
+  </item>
+  <item label="labwc-theme(5)" icon="deepin-manual">
+    <action name="Execute" command="foot -e 'man 5 labwc-theme'" />
+  </item>
+  <item label="labwc-menu(5)" icon="deepin-manual">
+    <action name="Execute" command="foot -e 'man 5 labwc-menu'" />
+  </item>
+  <item label="labwc-actions(5)" icon="deepin-manual">
+    <action name="Execute" command="foot -e 'man 5 labwc-actions'" />
+  </item>
+  <item label="labnag(1)" icon="deepin-manual">
+    <action name="Execute" command="foot -e 'man 1 labnag'" />
+  </item>
+</menu>'

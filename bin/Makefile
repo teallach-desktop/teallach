@@ -5,11 +5,13 @@ SCRIPTS = \
 	  teallach \
 	  teallach-welcome \
 	  teallach-nitrogen \
+		teallach-menu \
 	  tl-keyboard-layouts \
 	  tl-tint-run \
-	  tl-menu-generator \
 	  tl-open-desktop-entry \
 	  tl-web-browser \
+		tl-menu-help \
+		tl-output-power-management \
 	  tl-file-manager \
 	  tl-view-palette
 

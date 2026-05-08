@@ -1,11 +1,7 @@
 include config.mk
 include Makefile.inc
 
-all:
-	@$(MAKE) -C src/teallach-menu
-
 install:
-	@$(MAKE) -C src/teallach-menu $@
 	@$(MAKE) -C bin $@
 	@$(MAKE) -C usr/share/teallach $@
 	@$(MAKE) -C usr/share/themes/teallach $@

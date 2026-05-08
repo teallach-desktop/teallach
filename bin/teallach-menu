@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+: ${TL_CONFIG_DIR=$HOME/.config/teallach}
+filename="$TL_CONFIG_DIR/teallach-menu.conf"
+
+[[ -e "$filename" ]] || { printf "fatal: no menu file"; exit 1; }
+
+mapfile -t lines < "$filename"
+
+for line in "${lines[@]}"; do
+  if [[ $line == @@APPS@@* ]]; then
+    labwc-menu-generator -b -t foot -I -i "$(tl-datarootdir)/teallach/no-display-desktop-entries"
+  elif [[ $line == @@EXEC@@* ]]; then
+    ${line##@@EXEC@@}
+  else
+    printf '%b\n' "$line"
+  fi
+done
