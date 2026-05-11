@@ -49,7 +49,7 @@ choose() {
 	shift
 	shift
 
-	if ( dialog --menu "$title" 0 0 0 "$@" 2>"$tempfile" ) ; then
+	if ( dialog --menu "$title" 0 0 10 "$@" 2>"$tempfile" ) ; then
 		value=$(cat "$tempfile")
 		eval "$var='$value'"
 	fi
