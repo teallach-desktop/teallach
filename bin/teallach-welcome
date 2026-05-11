@@ -28,7 +28,7 @@ mainmenu() {
 	dialog \
 		--help-button --ok-label Edit --cancel-label Cancel \
 		--extra-button --extra-label Apply \
-		--menu "Teallach Setup Script" 0 0 0 \
+		--menu "Teallach Setup Script" 0 0 10 \
 		Panel      "Panel                (${TEALLACH_PANEL})" \
 		Layout     "Keyboard Layout      (${TEALLACH_KEYBOARD_LAYOUT})" \
 		2>"$tempfile"
