@@ -57,7 +57,7 @@ choose() {
 
 choose_Panel() {
 	items=$(mktemp /tmp/teallach-welcome.XXXXXXXXXX)
-	panels="tint xfce4-panel lxqt-panel"
+	panels="tint xfce4-panel lxqt-panel waybar t2play"
 	for panel in $panels; do
 		if ! command -v "$panel" 2>/dev/null; then
 			continue
