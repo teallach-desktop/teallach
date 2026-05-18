@@ -8,7 +8,7 @@ from PyQt6 import QtCore
 from PyQt6.QtGui import QBrush, QPen, QColor, QPixmap
 from PyQt6.QtWidgets import (QApplication, QDialog, QHBoxLayout, QVBoxLayout, QGraphicsScene,
                              QGraphicsView, QGraphicsItem, QGraphicsRectItem, QPushButton,
-                             QGraphicsPixmapItem, QComboBox,)
+                             QGraphicsPixmapItem, QComboBox, QStyle,)
 
 class Image(QGraphicsItem):
     BoundingRect = QtCore.QRectF(0, 0, 64, 64)
@@ -22,8 +22,18 @@ class Image(QGraphicsItem):
         return self.filename
     def boundingRect(self):
         return Image.BoundingRect
+    def itemChange(self, change, value):
+        if change == QGraphicsItem.GraphicsItemChange.ItemSelectedChange:
+            self.update()
+        return super().itemChange(change, value)
+
     def paint(self, painter, option, widget):
         painter.drawPixmap(QtCore.QPoint(0, 0), self.pixmap)
+        if option.state & QStyle.StateFlag.State_Selected:
+            pen = QPen(QColor(66, 133, 244), 3)
+            painter.setPen(pen)
+            painter.setBrush(QtCore.Qt.BrushStyle.NoBrush)
+            painter.drawRect(self.boundingRect().adjusted(1, 1, -1, -1))
 
 def is_image(filename):
     if len(filename) < 4:
@@ -86,8 +96,9 @@ class Window(QDialog):
         vbox = QVBoxLayout(self)
         self.setLayout(vbox)
         self.scene = QGraphicsScene(0, 0, 640, 480)
-        view = QGraphicsView(self.scene)
-        vbox.addWidget(view)
+        self.view = QGraphicsView(self.scene)
+        self.scene.selectionChanged.connect(self.on_selection_changed)
+        vbox.addWidget(self.view)
         self.button_box = QHBoxLayout(self)
         vbox.addLayout(self.button_box)
 
@@ -122,6 +133,17 @@ class Window(QDialog):
                         x = MARGIN
                 except FileNotFoundError:
                     print(f'error: image {filename} not found in cache')
+
+    def on_selection_changed(self):
+        items = self.scene.selectedItems()
+        if len(items) <= 1:
+            return
+        keep = items[-1]
+        self.scene.blockSignals(True)
+        for item in items:
+            if item is not keep:
+                item.setSelected(False)
+        self.scene.blockSignals(False)
 
     def on_quit_button_press(self):
         sys.exit(0)
