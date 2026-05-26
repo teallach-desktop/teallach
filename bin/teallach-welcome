@@ -8,7 +8,7 @@ trap 'rm -f $tempfile' EXIT
 
 : ${TEALLACH_CONFIG_DIR="$HOME/.config/teallach"}
 : ${LABWC_CONFIG_DIR="$HOME/.config/teallach"}
-: ${TEALLACH_PANEL="tint"}
+: ${TEALLACH_PANEL="t2play"}
 [[ -z $XKB_DEFAULT_LAYOUT ]] || TEALLACH_KEYBOARD_LAYOUT="$XKB_DEFAULT_LAYOUT"
 : ${TEALLACH_KEYBOARD_LAYOUT="us"}
 : ${TEALLACH_DATAROOTDIR="$(tl-datarootdir)"}
