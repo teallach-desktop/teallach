@@ -64,9 +64,6 @@
     <keybind key="W-0">
       <action name="Autoplace" policy="center" />
     </keybind>
-    <keybind key="W-d">
-      <action name="ToggleShowDesktop" />
-    </keybind>
     <keybind key="W-S-Left">
       <action name="ShrinkToEdge" direction="left" />
     </keybind>
