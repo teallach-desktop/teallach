@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+for f in rc.xml menu.xml autostart; do
+	diff -u usr/share/teallach/$f $HOME/.config/teallach/$f
+done

@@ -13,6 +13,7 @@ SCRIPTS = \
 	tl-menu-help \
 	tl-output-power-management \
 	tl-file-manager \
+	tl-diff-config \
 	tl-view-palette
 
 all:
