@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+DIFF="diff -u"
+
 for f in rc.xml menu.xml autostart; do
-	diff -u usr/share/teallach/$f $HOME/.config/teallach/$f
+	$DIFF usr/share/teallach/$f $HOME/.config/teallach/$f
 done
+
+$DIFF usr/share/themes/teallach/labwc/themerc $HOME/.local/share/themes/teallach/labwc/themerc
