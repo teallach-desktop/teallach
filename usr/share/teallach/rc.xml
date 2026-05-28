@@ -26,12 +26,9 @@
       <name>3</name>
     </names>
   </desktops>
-
   <windowSwitcher>
     <osd style="thumbnail" />
   </windowSwitcher>
-
-
   <menu>
     <showIcons>yes</showIcons>
   </menu>
@@ -91,6 +88,16 @@
     <keybind key="Print">
       <action name="Execute">
         <command>sh -c 'grim -g "$(slurp)"'</command>
+      </action>
+    </keybind>
+    <keybind key="XF86Suspend">
+      <action name="Execute">
+        <command>systemctl suspend</command>
+      </action>
+    </keybind>
+    <keybind key="XF86Sleep">
+      <action name="Execute">
+        <command>systemctl hibernate</command>
       </action>
     </keybind>
   </keyboard>
