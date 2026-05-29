@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 mkdir -p ~/.config/foot
 
 cat > ~/.config/foot/foot.ini <<- EOF
 	[main]
-#	include = /usr/share/foot/themes/apprentice
+	include = /usr/share/foot/themes/kitty
 	font = DeJaVu Sans Mono:size=10
 	initial-window-size-chars = 120x35
 
