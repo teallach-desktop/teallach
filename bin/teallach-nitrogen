@@ -45,6 +45,7 @@ class Cache: #pylint: disable=too-few-public-methods
         self.cache_dir = os.getenv('HOME') + '/.cache/teallach-nitrogen'
         pathlib.Path(self.cache_dir).mkdir(parents=True, exist_ok=True)
         dirname = os.getenv('HOME') + '/Pictures'
+        pathlib.Path(dirname).mkdir(parents=True, exist_ok=True)
         directory = os.fsencode(dirname)
         for file in os.listdir(directory):
             filename = os.fsdecode(file)
