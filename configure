@@ -21,9 +21,26 @@ print_ok_fail () {
 	fi
 }
 
+print_ok_warn () {
+	# Usage: print_ok_warn <status> <message>...
+	# <status> 0=ok; 1-127=fail
+	status=$1
+	shift
+	if [ "$status" = "0" ]; then
+		printf '%b\n' "[ OK ] $*"
+	else
+		printf '%b\n' "[WARN] $*"
+	fi
+}
+
 check_bin () {
-	type "$*" >/dev/null 2>&1
+	command -v "$*" >/dev/null 2>&1
 	print_ok_fail $? $*
+}
+
+check_bin_recommended () {
+	command -v "$*" >/dev/null 2>&1
+	print_ok_warn $? $*
 }
 
 check_lib () {
@@ -44,13 +61,18 @@ bins="\
 	foot \
 	wlr-randr \
 	wtype \
+	slurp \
 	wf-recorder \
 	xdg-settings \
 	xdg-open \
 	labwc-menu-generator \
 "
-libs="\
-	glib-2.0 \
+
+libs=""
+
+bins_recommended="\
+	kvantummanager \
+	qt6ct \
 "
 
 check_core_dependencies () {
@@ -59,6 +81,9 @@ check_core_dependencies () {
 	done
 	for lib in $libs; do
 		check_lib "$lib"
+	done
+	for bin in $bins_recommended; do
+		check_bin_recommended "$bin"
 	done
 
 	./configure-helpers/check-dep-pyqt6.py
