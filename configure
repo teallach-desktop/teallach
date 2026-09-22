@@ -88,6 +88,12 @@ check_core_dependencies () {
 
 	./configure-helpers/check-dep-pyqt6.py
 	print_ok_fail $? PyQt6
+
+	./configure-helpers/check-dep-pyqt6-gui.py
+	print_ok_fail $? PyQt6.Gui
+
+	./configure-helpers/check-dep-pyqt6-widgets.py
+	print_ok_fail $? PyQt6.Widgets
 }
 
 check_prefix_in_path () {
