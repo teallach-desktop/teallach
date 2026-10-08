@@ -52,6 +52,8 @@ bins="\
 	python3 \
 	dialog \
 	swaybg \
+	swaylock \
+	swayidle \
 	foot \
 	wlr-randr \
 	wtype \
