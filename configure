@@ -43,13 +43,7 @@ check_bin_recommended () {
 	print_ok_warn $? $*
 }
 
-check_lib () {
-	pkg-config "$*" >/dev/null 2>&1
-	print_ok_fail $? $*
-}
-
 bins="\
-	pkg-config \
 	make \
 	gcc \
 	scdoc \
@@ -68,8 +62,6 @@ bins="\
 	labwc-menu-generator \
 "
 
-libs=""
-
 bins_recommended="\
 	kvantummanager \
 	qt6ct \
@@ -78,9 +70,6 @@ bins_recommended="\
 check_core_dependencies () {
 	for bin in $bins; do
 		check_bin "$bin"
-	done
-	for lib in $libs; do
-		check_lib "$lib"
 	done
 	for bin in $bins_recommended; do
 		check_bin_recommended "$bin"
