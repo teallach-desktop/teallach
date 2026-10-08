@@ -45,9 +45,6 @@ check_bin_recommended () {
 
 bins="\
 	make \
-	gcc \
-	scdoc \
-	meson \
 	bash \
 	python3 \
 	dialog \
