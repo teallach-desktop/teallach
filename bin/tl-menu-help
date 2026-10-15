@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 printf '%b\n' '<menu id="help" label="Help" icon="help">
   <separator label="Online Help" />
@@ -10,7 +10,7 @@ printf '%b\n' '<menu id="help" label="Help" icon="help">
   <separator label="Man Pages" />
 
   <item label="labwc(1)" icon="deepin-manual">
-    <action name="Execute" command="foot -e 'man 1 labwc'" />
+    <action name="Execute"><command>foot -e 'man 1 labwc'</command></action>
   </item>
   <item label="labwc-config(5)" icon="deepin-manual">
     <action name="Execute" command="foot -e 'man 5 labwc-config'" />
