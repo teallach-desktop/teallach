@@ -16,6 +16,11 @@
       <size>9</size>
     </font>
   </theme>
+  <snapping>
+    <overlay>
+      <placement>above</placement>
+    </overlay>
+  </snapping>
   <resize>
     <drawContents>no</drawContents>
   </resize>
