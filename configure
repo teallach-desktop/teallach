@@ -58,12 +58,12 @@ bins="\
 	wf-recorder \
 	xdg-settings \
 	xdg-open \
-	labwc-menu-generator \
 "
 
 bins_recommended="\
 	kvantummanager \
 	qt6ct \
+	labwc-menu-generator \
 "
 
 check_core_dependencies () {
